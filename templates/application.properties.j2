@@ -1,0 +1,18 @@
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring.datasource.url={{ service_install_run_data_source_connection }}
+spring.datasource.username={{ service_install_run_data_source_connection_user }}
+spring.datasource.password={{ service_install_run_data_source_connection_password }}
+spring.datasource.driver-class-name= com.mysql.cj.jdbc.Driver
+
+#spring data (mongo)
+spring.data.mongodb.username={{service_install_run_data_connection_user}}
+spring.data.mongodb.password={{service_install_run_data_connection_password}}
+spring.data.mongodb.uri={{service_install_run_data_connection}}
+
+
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto = update
+

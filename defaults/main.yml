@@ -1,0 +1,7 @@
+service_install_run_data_source_connection: "jdbc:mysql://mysql_8_0_33:3306/mydb?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC"
+service_install_run_data_source_connection_user: "root"
+service_install_run_data_source_connection_password: "password"
+service_install_run_data_connection_user: "root"
+service_install_run_data_connection_password: "password"
+service_install_run_data_connection: "mongodb://mongo:27017/mydb"
+

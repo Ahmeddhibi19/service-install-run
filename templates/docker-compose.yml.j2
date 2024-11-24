@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  mysql:
+    image: mysql:8.0.33
+    container_name: mysql_8_0_33
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - my_network
+    command: ["--bind-address=0.0.0.0"]
+
+  mongo:
+    image: mongo:4.4.29-focal
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - my_network
+
+  eduhousing:
+    image: {{ image }}
+    container_name: eduhousing
+    working_dir: /ahmed/etc
+    command: java -jar /jar/EduHousing-{{ version }}.jar --spring.config.location=file:/etc/application.properties
+    volumes:
+      - /ahmed/etc/application.properties:/etc/application.properties
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+      - mongo
+    networks:
+      - my_network
+
+volumes:
+  mysql_data:
+
+networks:
+  my_network:
+    driver: bridge
